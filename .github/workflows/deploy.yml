@@ -37,6 +37,8 @@ jobs:
         echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
 
     - name: Apply Kubernetes configuration
+      env:
+        IMAGE_TAG: ${{ github.sha }}
       run: |
         kubectl config set-context --current --namespace=default
-        kubectl set image deployment/app-deployment demo-app=blackms/demo:${GITHUB_SHA}
+        envsubst < k8s-deployment.yml | kubectl apply -f -

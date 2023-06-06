@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: blackms/demo:${{ github.sha }}
+        image: blackms/demo:$IMAGE_TAG
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
