@@ -1,17 +1,39 @@
 # Demo Application
 
-This is a simple demo application that includes a controller with two endpoints. The first endpoint, `/demo`, returns a string message "This is a demo" when accessed. The second endpoint, `/sayBye`, returns a JSON object with a message "Bye from the API" when accessed.
+This is a simple Spring Boot application that demonstrates basic API endpoints.
+
+## Files
+
+1. **DemoApplication.java**: The main class that runs the Spring Boot application.
+2. **DemoController.java**: The controller class that contains the API endpoints.
+3. **DemoApplicationTests.java**: The test class for the application.
+
+## API Endpoints
+
+1. `/demo`: Returns a simple text message "This is a demo".
+2. `/sayHello`: Returns a JSON object with a message "Hello from the API".
+3. `/sayBye`: Returns a JSON object with a message "Bye from the API".
 
 ## Running the Application
 
-To run the application, you can use the `main` method in the `DemoApplication` class. This will start the Spring Boot application and make it available at `http://localhost:8080`.
+To run the application, execute the following command:
+```
+./mvnw spring-boot:run
+```
+## Running Tests
 
-## Testing the Application
+To run the tests, execute the following command:
 
-The application includes a test class, `DemoApplicationTests`, which can be used to test the endpoints. The `contextLoads` method is a simple test that checks if the application context loads successfully.
+```
+./mvnw test
+```
 
-To test the endpoints, you can use a tool like Postman or cURL to send requests to the endpoints and verify the responses.
+## Accessing the API
 
-## Conclusion
+Once the application is running, you can access the API endpoints using a web browser or a tool like [Postman](https://www.postman.com/).
 
-This demo application is a simple example of how to create a Spring Boot application with a controller and endpoints. It can be used as a starting point for more complex applications or as a reference for learning Spring Boot.
+For example, to access the `/demo` endpoint, navigate to:
+
+```
+http://localhost:8080/demo
+```
