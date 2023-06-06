@@ -10,4 +10,9 @@ public class DemoController {
     public String thisIsADemo() {
         return "This is a demo";
     }
+
+    @GetMapping("/api/hello")
+    public String hello() {
+        return "Hello from the API";
+    }   
 }
