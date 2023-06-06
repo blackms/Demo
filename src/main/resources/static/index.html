@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Demo</title>
+    <script>
+        async function fetchData(endpoint) {
+            const response = await fetch(endpoint);
+            const data = await response.json();
+            return data;
+        }
+
+        async function handleDemo() {
+            const demoResponse = await fetch('/demo');
+            const demoText = await demoResponse.text();
+            document.getElementById('demo').innerText = demoText;
+        }
+
+        async function handleSayHello() {
+            const helloData = await fetchData('/sayHello');
+            document.getElementById('hello').innerText = helloData.message;
+        }
+
+        async function handleSayBye() {
+            const byeData = await fetchData('/sayBye');
+            document.getElementById('bye').innerText = byeData.message;
+        }
+    </script>
+</head>
+<body>
+    <h1>API Demo</h1>
+    <button onclick="handleDemo()">Demo</button>
+    <p id="demo"></p>
+    <button onclick="handleSayHello()">Say Hello</button>
+    <p id="hello"></p>
+    <button onclick="handleSayBye()">Say Bye</button>
+    <p id="bye"></p>
+</body>
+</html>
