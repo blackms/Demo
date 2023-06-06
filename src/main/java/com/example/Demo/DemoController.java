@@ -20,4 +20,9 @@ public class DemoController {
     public String hello2() {
         return "{\"message\":\"Hello from the API\"}";
     }
+
+    @GetMapping(value="/higuys", produces = "application/json")
+    public String higuys() {
+        return "{\"message\":\"Hi guys from the API\"}";
+    }
 }
