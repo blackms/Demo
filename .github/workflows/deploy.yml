@@ -22,12 +22,14 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Build Docker image
-      run: docker build . --file Dockerfile --tag blackms/demo:latest
+      run: |
+        echo "${GITHUB_SHA}" > VERSION
+        docker build . --file Dockerfile --tag blackms/demo:${GITHUB_SHA}
 
     - name: Push Docker image to Docker Hub
       run: |
         echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
-        docker push blackms/demo:latest
+        docker push blackms/demo:${GITHUB_SHA}
 
     - name: Set up kubeconfig
       run: |
@@ -37,4 +39,4 @@ jobs:
     - name: Apply Kubernetes configuration
       run: |
         kubectl config set-context --current --namespace=default
-        kubectl apply -f k8s-deployment.yml
+        kubectl set image deployment/app-deployment demo-app=blackms/demo:${GITHUB_SHA}
