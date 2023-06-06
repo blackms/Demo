@@ -11,8 +11,8 @@ public class DemoController {
         return "This is a demo";
     }
 
-    @GetMapping("/api/hello")
+    @GetMapping(value="/sayBye", produces = "application/json")
     public String hello() {
-        return "Hello from the API";
-    }   
+        return "{\"message\":\"Bye from the API\"}";
+    }
 }
